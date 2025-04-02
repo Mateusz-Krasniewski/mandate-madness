@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="epNncKVaIczOdfM2L-eAYnRTdxB-FgJaxliRWTBKjKM" />
+    <title>Mandate Madness - Polityczna Gra Platformowa</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .banner {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .info-section {
+            margin-bottom: 3rem;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .screenshot {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .screenshot:hover {
+            transform: translateY(-5px);
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+        
+        .privacy-section {
+            margin-bottom: 2rem;
+        }
+        
+        .privacy-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="feature_graphic.png" alt="Baner Mandate Madness" class="banner">
+    </header>
+    
+    <nav>
+        <a href="#">Strona główna</a>
+        <a href="#">O grze</a>
+        <a href="#">Postacie</a>
+        <a href="#">Pobierz</a>
+        <a href="#privacy">Polityka prywatności</a>
+    </nav>
+    
+    <div class="container">
+        <div class="game-info">
+            <div class="info-section">
+                <h1>Witamy w Mandate Madness!</h1>
+                <p>Skacz, unikaj i nawiguj przez polityczny krajobraz pełen wyzwań i przeszkód. Wybierz spośród różnorodnych unikalnych postaci, z których każda reprezentuje inne poglądy polityczne, i konkuruj o najwyższy wynik!</p>
+                <a href="#" class="cta-button">Pobierz teraz</a>
+            </div>
+            
+            <div class="info-section">
+                <h2>Zrzuty ekranu z gry</h2>
+                <div class="screenshots">
+                    <div class="screenshot">
+                        <img src="Screenshot_20250401_185823.png" alt="Zrzut ekranu z rozgrywki 1">
+                    </div>
+                    <div class="screenshot">
+                        <img src="Screenshot_20250401_185841.png" alt="Zrzut ekranu z rozgrywki 2">
+                    </div>
+                    <div class="screenshot">
+                        <img src="Screenshot_20250401_185852.png" alt="Zrzut ekranu z rozgrywki 3">
+                    </div>
+                    <div class="screenshot">
+                        <img src="Screenshot_20250401_185910.png" alt="Zrzut ekranu z rozgrywki 4">
+                    </div>
+                    <div class="screenshot">
+                        <img src="Screenshot_20250401_185937.png" alt="Zrzut ekranu z rozgrywki 5">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2>Wybór postaci</h2>
+                <p>Wybierz spośród różnorodnej obsady postaci, z których każda ma swoje unikalne umiejętności i perspektywy polityczne:</p>
+                <ul>
+                    <li><img src="ks.png" alt="Reporter" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Reporter</strong> - Odkrywa historie, które trzymają polityków w napięciu</li>
+                    <li><img src="kn.png" alt="Historyk" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Historyk</strong> - Strażnik polskiej przeszłości, czasem zmienianej</li>
+                    <li><img src="gb.png" alt="Strażak" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Strażak</strong> - Filmowiec gaszący przeciwne poglądy</li>
+                    <li><img src="sm.png" alt="Księgowy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Księgowy</strong> - Marzy o niższych podatkach i większej wolności</li>
+                    <li><img src="rt.png" alt="Tęczowy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Tęczowy</strong> - Maluje politykę wszystkimi kolorami inkluzywności</li>
+                    <li><img src="mj.png" alt="Piwowar" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Piwowar</strong> - Wierzy, że politykę rozwiązuje się na dnie kufla piwa</li>
+                    <li><img src="sh.png" alt="Łzawy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Łzawy</strong> - Odwołuje się do emocji sięgających po chusteczkę</li>
+                    <li><img src="mb.png" alt="Czerwony" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Czerwony</strong> - Postępowy aktywista o wyraźnych poglądach politycznych</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="privacy" class="container privacy-container">
+        <h1>Polityka Prywatności</h1>
+        <p><strong>Ostatnia aktualizacja:</strong> 1 kwietnia 2025</p>
+        <p>Ta polityka prywatności dotyczy gry mobilnej <strong>Mandate Madness</strong>, stworzonej przez <strong>Mateusza Kraśniewskiego</strong>.</p>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">📦</span> Jakie informacje zbieramy</h3>
+            <ul>
+                <li><strong>DEVICE_ID</strong> – używane do śledzenia wyników rozgrywki.</li>
+                <li><strong>Nie zbieramy</strong> żadnych danych osobowych, takich jak imię, e-mail czy lokalizacja.</li>
+            </ul>
+        </div>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">⚙️</span> Jak wykorzystujemy te informacje</h3>
+            <p>Używamy <strong>DEVICE_ID</strong> wyłącznie do powiązania Twoich najlepszych wyników z Twoim urządzeniem. Pomaga to nam utrzymać funkcjonalność tablic wyników. Bez śledzenia, bez reklam, bez żadnych podstępów.</p>
+        </div>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">🚫</span> Usługi stron trzecich</h3>
+            <p><strong>Żadne usługi stron trzecich</strong> (jak reklamy czy analityka) nie są zintegrowane z tą grą. Twoje dane pozostają na Twoim urządzeniu lub na naszym bezpiecznym serwerze.</p>
+        </div>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">🔒</span> Udostępnianie danych</h3>
+            <p><strong>Nie sprzedajemy, nie udostępniamy ani nie ujawniamy</strong> Twoich danych nikomu.</p>
+        </div>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">👶</span> Prywatność dzieci</h3>
+            <p><strong>Mandate Madness</strong> jest przeznaczona dla ogólnej publiczności. Nie zbieramy świadomie danych od dzieci poniżej 13 roku życia.</p>
+        </div>
+        
+        <div class="privacy-section">
+            <h3><span class="privacy-icon">📬</span> Kontakt</h3>
+            <p>Jeśli masz jakiekolwiek pytania lub wątpliwości dotyczące tej Polityki Prywatności, skontaktuj się z nami pod adresem: mateusz.krasniewski19@gmail.com</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Mandate Madness. Wszelkie prawa zastrzeżone.</p>
+        <p>Stworzone przez Mateusza Kraśniewskiego</p>
+    </footer>
+</body>
+</html>
