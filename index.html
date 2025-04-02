@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="epNncKVaIczOdfM2L-eAYnRTdxB-FgJaxliRWTBKjKM" />
+    <meta name="google-site-verification" content="VTFtjXl-KaDRmgz1fElo3GTK1AwwL4FmOcp86P23Nu0" />
     <title>Mandate Madness - Polityczna Gra Platformowa</title>
     <style>
         body {
@@ -19,14 +19,17 @@
             background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
+            overflow: hidden;
         }
         
         .banner {
             width: 100%;
-            max-width: 900px;
+            height: auto;
+            max-height: 250px;
             margin: 0 auto;
             display: block;
+            object-fit: contain;
         }
         
         nav {
@@ -101,11 +104,26 @@
             text-decoration: none;
             font-weight: bold;
             margin-top: 1rem;
+            margin-right: 10px;
             transition: background-color 0.3s;
         }
         
         .cta-button:hover {
             background-color: #2980b9;
+        }
+        
+        .cta-button-ios {
+            background-color: #34495e;
+        }
+        
+        .cta-button-ios:hover {
+            background-color: #2c3e50;
+        }
+        
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         footer {
@@ -134,6 +152,34 @@
             font-size: 1.5rem;
             margin-right: 0.5rem;
         }
+        
+        .lang-switch {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        
+        .lang-switch button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            margin-left: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .lang-switch button.active {
+            background-color: #2c3e50;
+        }
+        
+        .privacy-content {
+            display: none;
+        }
+        
+        .privacy-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -154,26 +200,23 @@
             <div class="info-section">
                 <h1>Witamy w Mandate Madness!</h1>
                 <p>Skacz, unikaj i nawiguj przez polityczny krajobraz pełen wyzwań i przeszkód. Wybierz spośród różnorodnych unikalnych postaci, z których każda reprezentuje inne poglądy polityczne, i konkuruj o najwyższy wynik!</p>
-                <a href="#" class="cta-button">Pobierz teraz</a>
+                <div class="download-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=com.mkrasniewski.mandatemadness" class="cta-button" target="_blank">Pobierz z Google Play</a>
+                    <a href="#" class="cta-button cta-button-ios">Wkrótce na iOS</a>
+                </div>
             </div>
             
             <div class="info-section">
                 <h2>Zrzuty ekranu z gry</h2>
                 <div class="screenshots">
                     <div class="screenshot">
-                        <img src="Screenshot_20250401_185823.png" alt="Zrzut ekranu z rozgrywki 1">
+                        <img src="01.png" alt="Zrzut ekranu z rozgrywki 1">
                     </div>
                     <div class="screenshot">
-                        <img src="Screenshot_20250401_185841.png" alt="Zrzut ekranu z rozgrywki 2">
+                        <img src="02.png" alt="Zrzut ekranu z rozgrywki 2">
                     </div>
                     <div class="screenshot">
-                        <img src="Screenshot_20250401_185852.png" alt="Zrzut ekranu z rozgrywki 3">
-                    </div>
-                    <div class="screenshot">
-                        <img src="Screenshot_20250401_185910.png" alt="Zrzut ekranu z rozgrywki 4">
-                    </div>
-                    <div class="screenshot">
-                        <img src="Screenshot_20250401_185937.png" alt="Zrzut ekranu z rozgrywki 5">
+                        <img src="03.png" alt="Zrzut ekranu z rozgrywki 3">
                     </div>
                 </div>
             </div>
@@ -198,45 +241,118 @@
     <div id="privacy" class="container privacy-container">
         <h1>Polityka Prywatności</h1>
         <p><strong>Ostatnia aktualizacja:</strong> 1 kwietnia 2025</p>
-        <p>Ta polityka prywatności dotyczy gry mobilnej <strong>Mandate Madness</strong>, stworzonej przez <strong>Mateusza Kraśniewskiego</strong>.</p>
         
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">📦</span> Jakie informacje zbieramy</h3>
-            <ul>
-                <li><strong>DEVICE_ID</strong> – używane do śledzenia wyników rozgrywki.</li>
-                <li><strong>Nie zbieramy</strong> żadnych danych osobowych, takich jak imię, e-mail czy lokalizacja.</li>
-            </ul>
+        <div class="lang-switch">
+            <button id="pl-btn" class="active" onclick="switchLanguage('pl')">PL</button>
+            <button id="en-btn" onclick="switchLanguage('en')">EN</button>
         </div>
-        
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">⚙️</span> Jak wykorzystujemy te informacje</h3>
-            <p>Używamy <strong>DEVICE_ID</strong> wyłącznie do powiązania Twoich najlepszych wyników z Twoim urządzeniem. Pomaga to nam utrzymać funkcjonalność tablic wyników. Bez śledzenia, bez reklam, bez żadnych podstępów.</p>
+
+        <div id="privacy-pl" class="privacy-content active">
+            <p>Ta polityka prywatności dotyczy gry mobilnej <strong>Mandate Madness</strong>, stworzonej przez <strong>Mateusza Kraśniewskiego</strong>.</p>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">📦</span> Jakie informacje zbieramy</h3>
+                <ul>
+                    <li><strong>DEVICE_ID</strong> – używane do śledzenia wyników rozgrywki.</li>
+                    <li><strong>Nie zbieramy</strong> żadnych danych osobowych, takich jak imię, e-mail czy lokalizacja.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">⚙️</span> Jak wykorzystujemy te informacje</h3>
+                <p>Używamy <strong>DEVICE_ID</strong> wyłącznie do powiązania Twoich najlepszych wyników z Twoim urządzeniem. Pomaga to nam utrzymać funkcjonalność tablic wyników. Bez śledzenia, bez reklam, bez żadnych podstępów.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🚫</span> Usługi stron trzecich</h3>
+                <p><strong>Żadne usługi stron trzecich</strong> (jak reklamy czy analityka) nie są zintegrowane z tą grą. Twoje dane pozostają na Twoim urządzeniu lub na naszym bezpiecznym serwerze.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🔒</span> Udostępnianie danych</h3>
+                <p><strong>Nie sprzedajemy, nie udostępniamy ani nie ujawniamy</strong> Twoich danych nikomu.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">👶</span> Prywatność dzieci</h3>
+                <p><strong>Mandate Madness</strong> jest przeznaczona dla ogólnej publiczności. Nie zbieramy świadomie danych od dzieci poniżej 13 roku życia.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">📬</span> Kontakt</h3>
+                <p>Jeśli masz jakiekolwiek pytania lub wątpliwości dotyczące tej Polityki Prywatności, skontaktuj się z nami pod adresem: mateusz.krasniewski19@gmail.com</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🎭</span> Postacie fikcyjne i charakter satyryczny</h3>
+                <p>Gra <strong>Mandate Madness</strong> zawiera postacie, które są całkowicie fikcyjne i stworzone wyłącznie w celach rozrywkowych oraz satyrycznych. Jakiekolwiek podobieństwo do prawdziwych osób, żyjących lub zmarłych, jest przypadkowe lub stanowi element humorystycznego komentarza społecznego. Gra nie ma na celu obrażania, szkalowania ani przedstawiania żadnej konkretnej osoby w negatywnym świetle.</p>
+            </div>
         </div>
-        
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">🚫</span> Usługi stron trzecich</h3>
-            <p><strong>Żadne usługi stron trzecich</strong> (jak reklamy czy analityka) nie są zintegrowane z tą grą. Twoje dane pozostają na Twoim urządzeniu lub na naszym bezpiecznym serwerze.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">🔒</span> Udostępnianie danych</h3>
-            <p><strong>Nie sprzedajemy, nie udostępniamy ani nie ujawniamy</strong> Twoich danych nikomu.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">👶</span> Prywatność dzieci</h3>
-            <p><strong>Mandate Madness</strong> jest przeznaczona dla ogólnej publiczności. Nie zbieramy świadomie danych od dzieci poniżej 13 roku życia.</p>
-        </div>
-        
-        <div class="privacy-section">
-            <h3><span class="privacy-icon">📬</span> Kontakt</h3>
-            <p>Jeśli masz jakiekolwiek pytania lub wątpliwości dotyczące tej Polityki Prywatności, skontaktuj się z nami pod adresem: mateusz.krasniewski19@gmail.com</p>
+
+        <div id="privacy-en" class="privacy-content">
+            <p>This privacy policy applies to the mobile game <strong>Mandate Madness</strong>, created by <strong>Mateusz Kraśniewski</strong>.</p>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">📦</span> What information we collect</h3>
+                <ul>
+                    <li><strong>DEVICE_ID</strong> - used to track game scores.</li>
+                    <li><strong>We do not collect</strong> any personal data such as name, email, or location.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">⚙️</span> How we use this information</h3>
+                <p>We use <strong>DEVICE_ID</strong> solely to link your best scores with your device. This helps us maintain the leaderboard functionality. No tracking, no ads, no tricks.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🚫</span> Third-party services</h3>
+                <p><strong>No third-party services</strong> (such as ads or analytics) are integrated with this game. Your data remains on your device or on our secure server.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🔒</span> Data sharing</h3>
+                <p><strong>We do not sell, share, or disclose</strong> your data to anyone.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">👶</span> Children's privacy</h3>
+                <p><strong>Mandate Madness</strong> is intended for a general audience. We do not knowingly collect data from children under the age of 13.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">📬</span> Contact</h3>
+                <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at: mateusz.krasniewski19@gmail.com</p>
+            </div>
+
+            <div class="privacy-section">
+                <h3><span class="privacy-icon">🎭</span> Fictional characters and satirical nature</h3>
+                <p><strong>Mandate Madness</strong> contains characters that are entirely fictional and created solely for entertainment and satirical purposes. Any resemblance to real persons, living or dead, is purely coincidental or intended as humorous social commentary. The game is not intended to offend, defame, or portray any specific individual in a negative light.</p>
+            </div>
         </div>
     </div>
-    
+
     <footer>
         <p>&copy; 2025 Mandate Madness. Wszelkie prawa zastrzeżone.</p>
         <p>Stworzone przez Mateusza Kraśniewskiego</p>
     </footer>
+    
+    <script>
+        function switchLanguage(lang) {
+            // Hide all content
+            document.querySelectorAll('.privacy-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected language content
+            document.getElementById('privacy-' + lang).classList.add('active');
+            
+            // Update button styles
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(lang + '-btn').classList.add('active');
+        }
+    </script>
 </body>
 </html>
