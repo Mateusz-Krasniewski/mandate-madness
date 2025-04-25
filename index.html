@@ -4,169 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="VTFtjXl-KaDRmgz1fElo3GTK1AwwL4FmOcp86P23Nu0" />
-    <title>Mandate Madness - Polityczna Gra Platformowa</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    <title>Mandate Madness - Dynamiczna Gra Platformowa</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #34495e;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #f39c12;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            --box-shadow-hover: 0 6px 15px rgba(0,0,0,0.2);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: var(--light-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
         
         header {
-            background-color: #34495e;
+            background-color: var(--primary-dark);
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            position: relative;
+            padding: var(--spacing-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            overflow: hidden;
         }
         
-        .banner {
-            width: 100%;
-            height: auto;
-            max-height: 250px;
-            margin: 0 auto;
-            display: block;
-            object-fit: contain;
-            background-color: transparent;
+        .header-title, .separator, .header-subtitle, .download-buttons {
+            position: relative;
+            z-index: 1;
         }
         
-        .header-download {
-            position: relative;
-            z-index: 10;
+        .header-title {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-xs);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        
+        .header-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+            font-weight: 500;
+            padding-left: var(--spacing-md);
+            padding-right: var(--spacing-md);
         }
         
         .download-buttons {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 0 auto;
-        }
-        
-        nav {
-            background-color: #34495e;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #3498db;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .game-info {
-            display: flex;
             flex-direction: column;
-            gap: 2rem;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin: 0 auto;
+            max-width: 600px;
         }
         
-        .info-section {
-            margin-bottom: 3rem;
-        }
-        
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .screenshot {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .screenshot:hover {
-            transform: translateY(-5px);
-        }
-        
-        .screenshot img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .separator {
+            width: 80px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 10px auto 15px;
+            border-radius: 2px;
         }
         
         .cta-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #3498db;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 10px;
+            background-color: white;
+            color: black;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            margin-right: 10px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            min-width: 220px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 260px;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            text-transform: none;
+            letter-spacing: 0;
         }
         
         .cta-button:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background-color: #f8f8f8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         .cta-button-ios {
-            background-color: #000000;
+            background-color: white;
         }
         
         .cta-button-ios:hover {
-            background-color: #333333;
+            background-color: #f8f8f8;
         }
         
         .store-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: var(--spacing-sm) 0;
+            text-align: center;
+            position: sticky;
+            z-index: 100;
+            box-shadow: var(--box-shadow);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+        }
+        
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .info-section {
+            margin-bottom: var(--spacing-lg);
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        h1, h2, h3 {
+            color: var(--dark-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .screenshot {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .screenshot:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .screenshot:hover img {
+            transform: scale(1.05);
+        }
+        
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .character-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .character-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: var(--spacing-sm);
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .character-header {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm);
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .character-info {
+            padding: var(--spacing-sm);
+        }
+        
+        .character-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+        
+        .character-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .feature-highlight {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+        
+        .download-section h2 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .download-section h2:after {
+            background-color: white;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         footer {
-            background-color: #2c3e50;
+            background-color: var(--dark-color);
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 2rem;
+            padding: var(--spacing-md) 0;
+            margin-top: var(--spacing-lg);
         }
         
         .privacy-container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
+            margin: var(--spacing-lg) auto;
+            padding: var(--spacing-md);
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             line-height: 1.8;
         }
         
         .privacy-section {
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid #eee;
         }
         
         .privacy-icon {
@@ -176,11 +366,11 @@
         
         .lang-switch {
             text-align: right;
-            margin-bottom: 1rem;
+            margin-bottom: var(--spacing-sm);
         }
         
         .lang-switch button {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 6px 12px;
@@ -188,10 +378,15 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .lang-switch button:hover {
+            background-color: var(--primary-dark);
         }
         
         .lang-switch button.active {
-            background-color: #2c3e50;
+            background-color: var(--dark-color);
         }
         
         .privacy-content {
@@ -201,6 +396,186 @@
         .privacy-content.active {
             display: block;
         }
+        
+        .game-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-color);
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.2rem;
+        }
+        
+        /* Style dla sekcji udostępniania wyników */
+        .share-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            max-width: 600px;
+            margin: var(--spacing-md) auto;
+            padding: var(--spacing-md);
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .share-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .share-button:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+        }
+        
+        .share-preview {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .preview-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .preview-text span {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+                padding-left: var(--spacing-sm);
+                padding-right: var(--spacing-sm);
+            }
+            
+            nav {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 10px 0;
+            }
+            
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: var(--spacing-sm);
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .screenshots {
+                gap: var(--spacing-sm);
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .characters-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-section {
+                padding: var(--spacing-sm);
+            }
+        }
     </style>
     
     <!-- Twitter conversion tracking base code -->
@@ -208,73 +583,476 @@
     !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
     },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
     a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-    twq('config','pk7sl');
+    // Removed twq('config','pk7sl');
     </script>
     <!-- End Twitter conversion tracking base code -->
+    
+    <script>
+    // Function to generate UUID
+    function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    
+    // Function to create or retrieve dynamic referral link
+    async function createDynamicLink(character, score) {
+        // Check if we have an existing link stored for this device
+        const storedLinkKey = 'mandate_madness_referral_link';
+        const storedLink = localStorage.getItem(storedLinkKey);
+        
+        if (storedLink) {
+            console.log('Using existing referral link:', storedLink);
+            return storedLink;
+        }
+        
+        // If no stored link, create a new one
+        try {
+            // Firebase Dynamic Links API endpoint
+            const apiKey = 'YOUR_FIREBASE_API_KEY'; // Replace with your actual Firebase API key
+            const dynamicLinkDomain = 'madness.page.link'; // Replace with your actual dynamic link domain
+            
+            const apiUrl = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${apiKey}`;
+            
+            // Base URL for your app/game
+            const appUrl = 'https://mandatemadness.com/join'; // Replace with your actual app deep link URL
+            
+            // Build the dynamic link parameters
+            const dynamicLinkInfo = {
+                dynamicLinkInfo: {
+                    domainUriPrefix: `https://${dynamicLinkDomain}`,
+                    link: `${appUrl}?character=${encodeURIComponent(character)}&score=${encodeURIComponent(score)}`,
+                    androidInfo: {
+                        androidPackageName: 'com.mkrasniewski.mandatemadness'
+                    },
+                    iosInfo: {
+                        iosBundleId: 'com.mkrasniewski.mandatemadness',
+                        iosAppStoreId: '6744563582' // Replace with your actual App Store ID
+                    },
+                    socialMetaTagInfo: {
+                        socialTitle: 'Mandate Madness',
+                        socialDescription: `Właśnie pobiłem swój rekord w Mandate Madness! Mój wynik jako ${character} to ${score}! Dołącz do gry i konkuruj ze mną!`,
+                        socialImageLink: 'https://mandatemadness.com/share_image.jpg' // Replace with your actual share image URL
+                    }
+                },
+                suffix: {
+                    option: 'SHORT'
+                }
+            };
+            
+            // Make API request to create the dynamic link
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dynamicLinkInfo)
+            });
+            
+            const data = await response.json();
+            
+            if (data.shortLink) {
+                // Store the link for future use
+                localStorage.setItem(storedLinkKey, data.shortLink);
+                console.log('Created new referral link:', data.shortLink);
+                return data.shortLink;
+            } else {
+                console.error('Failed to create dynamic link:', data);
+                // Fallback to a default link format if API fails
+                return `https://${dynamicLinkDomain}/?character=${encodeURIComponent(character)}&score=${encodeURIComponent(score)}`;
+            }
+        } catch (error) {
+            console.error('Error creating dynamic link:', error);
+            // Fallback to a default link format if API fails
+            return `https://${dynamicLinkDomain}/?character=${encodeURIComponent(character)}&score=${encodeURIComponent(score)}`;
+        }
+    }
+    
+    // Function to share game score
+    async function shareGameScore(character, score) {
+        const dynamicLink = await createDynamicLink(character, score);
+        const shareText = `Właśnie pobiłem swój rekord w Mandate Madness! Mój wynik jako ${character} to ${score}! Kliknij link aby dołączyć do gry i ze mną konkurować! #MandateMadness ${dynamicLink}`;
+        
+        // Check if Web Share API is available
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'Mandate Madness',
+                    text: shareText,
+                    url: dynamicLink
+                });
+                console.log('Successfully shared');
+            } catch (error) {
+                console.error('Error sharing:', error);
+                // Fallback to clipboard copy
+                copyToClipboard(shareText);
+            }
+        } else {
+            // Fallback to clipboard copy
+            copyToClipboard(shareText);
+        }
+    }
+    
+    // Helper function to copy text to clipboard
+    function copyToClipboard(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        
+        try {
+            document.execCommand('copy');
+            alert('Link skopiowany do schowka! Możesz teraz wkleić go gdzie chcesz.');
+        } catch (err) {
+            console.error('Failed to copy text:', err);
+            alert('Nie udało się skopiować linku. Spróbuj ponownie później.');
+        }
+        
+        document.body.removeChild(textarea);
+    }
+    
+    // Add event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const headerElement = document.querySelector('header');
+        const navElement = document.querySelector('nav');
+        const containerElement = document.querySelector('.container');
+
+        function updateStickyLayout() {
+            if (headerElement && navElement && containerElement) {
+                const headerHeight = headerElement.offsetHeight;
+                navElement.style.top = headerHeight + 'px';
+
+                const navHeight = navElement.offsetHeight;
+                containerElement.style.paddingTop = (headerHeight + navHeight) + 'px';
+            }
+        }
+
+        if (headerElement && navElement && containerElement) {
+            updateStickyLayout(); // Initial call
+            window.addEventListener('resize', updateStickyLayout); // Update on resize
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement && headerElement && navElement) { // Check if elements exist
+                        const headerHeight = headerElement.offsetHeight;
+                        const navHeight = navElement.offsetHeight;
+                        const totalStickyHeight = headerHeight + navHeight;
+
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - totalStickyHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Obsługa sekcji udostępniania wyników
+        const characterSelect = document.getElementById('character-select');
+        const scoreInput = document.getElementById('score-input');
+        const shareButton = document.getElementById('share-button');
+        const previewCharacter = document.getElementById('preview-character');
+        const previewScore = document.getElementById('preview-score');
+        
+        // Aktualizuj podgląd, gdy zmienią się wartości
+        function updateSharePreview() {
+            previewCharacter.textContent = characterSelect.value;
+            previewScore.textContent = scoreInput.value;
+        }
+        
+        // Dodaj nasłuchiwacze zdarzeń
+        characterSelect.addEventListener('change', updateSharePreview);
+        scoreInput.addEventListener('input', updateSharePreview);
+        
+        // Obsługa przycisku udostępniania
+        shareButton.addEventListener('click', function() {
+            const character = characterSelect.value;
+            const score = scoreInput.value;
+            
+            // Sprawdź, czy wartości są poprawne
+            if (!character || !score || isNaN(score) || score < 1) {
+                alert('Proszę wybrać postać i podać poprawny wynik (liczba większa od 0).');
+                return;
+            }
+            
+            // Wywołaj funkcję udostępniania
+            shareGameScore(character, score);
+        });
+    });
+    </script>
 </head>
 <body>
     <header>
-        <div class="header-download">
-            <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=com.mkrasniewski.mandatemadness" class="cta-button" target="_blank">
-                    <svg class="store-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                        <path d="M3.609 1.814L13.792 12 3.609 22.186c-.18.163-.301.396-.301.663v-21.7c0 .267.12.5.301.664zm10.89 11.493l2.302 2.302-10.82 6.147 8.518-8.449zm.005-2.615L5.988 2.244l10.82 6.147-2.302 2.302zM15.206 12l3.402 3.402c.599.599.599 1.602 0 2.201l-3.402-3.402L19.606 10c.599.599.599 1.602 0 2.201L15.206 12z"/>
-                    </svg>
-                    Pobierz z Google Play
-                </a>
-                <a href="https://apps.apple.com/us/app/mandatemadness-political-race/id6744563582" class="cta-button cta-button-ios" target="_blank">
-                    <svg class="store-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                        <path d="M17.336 13.605c-.013-1.374.635-2.426 1.955-3.189-1.087-1.573-2.755-2.272-4.86-2.104-1.143.092-2.177.542-2.852.845-1.018.459-1.93.565-3.046.223-.037-.011-1.105-.333-1.674-.333C5.197 9.047 3 10.768 3 15.027c0 1.312.246 2.234.743 3.566.496 1.332 2.46 4.299 4.28 4.407 1.135.067 1.898-.63 3.215-.63s1.894.607 3.215.63c1.944.033 3.562-2.346 4.382-4.407-2.782-1.321-3.499-3.841-3.499-4.988zm-3.428-7.658c1.31-1.585 1.174-3.035 1.142-3.547-1.107.068-2.421.79-3.187 1.788-.803 1.04-1.178 2.274-1.092 3.558 1.213.088 2.326-.553 3.137-1.799z"/>
-                    </svg>
-                    Pobierz z App Store
-                </a>
-            </div>
+        <h1 class="header-title">Mandate Madness</h1>
+        <div class="separator"></div>
+        <p class="header-subtitle">Pokaż, kto rządzi w Mandate Madness! Zanurz się w świat politycznej satyry i dynamicznej akcji!</p>
+        
+        <div class="download-buttons">
+            <a href="https://play.google.com/store/apps/details?id=com.mkrasniewski.mandatemadness" id="android-download" class="cta-button" target="_blank">
+                <img src="google_play.png" alt="Android Icon" class="store-icon">
+                <span>Pobierz z Google Play</span>
+            </a>
+            <a href="https://apps.apple.com/us/app/mandatemadness-political-race/id6744563582" id="ios-download" class="cta-button cta-button-ios" target="_blank">
+                <img src="apple.png" alt="iOS Icon" class="store-icon">
+                <span>Pobierz z App Store</span>
+            </a>
         </div>
     </header>
     
     <nav>
-        <a href="#">Strona główna</a>
-        <a href="#">O grze</a>
-        <a href="#">Postacie</a>
-        <a href="#">Pobierz</a>
-        <a href="#privacy">Polityka prywatności</a>
+        <a href="#about">O grze</a>
+        <a href="#screenshots">Zrzuty ekranu</a>
+        <a href="#characters">Postacie</a>
+        <a href="#features">Funkcje</a>
+        <a href="#share">Udostępnij</a>
+        <a href="#privacy">Prywatność</a>
+        <a href="#terms">Regulamin</a>
     </nav>
     
     <div class="container">
         <div class="game-info">
-            <div class="info-section">
+            <div id="about" class="info-section">
                 <h1>Witamy w Mandate Madness!</h1>
-                <p>Skacz, unikaj i nawiguj przez polityczny krajobraz pełen wyzwań i przeszkód. Wybierz spośród różnorodnych unikalnych postaci, z których każda reprezentuje inne poglądy polityczne, i konkuruj o najwyższy wynik!</p>
+                <p>Zanurz się w fascynującym świecie pełnym rywalizacji i wyzwań! <strong>Mandate Madness</strong> to dynamiczna gra platformowa, w której:</p>
+                
+                <div class="game-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏃</div>
+                        <div class="feature-title">Dynamiczna Rozgrywka</div>
+                        <p>Skacz, unikaj i nawiguj przez różnorodny krajobraz pełen wyzwań i przeszkód.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <div class="feature-title">Unikalne Postacie</div>
+                        <p>Każda postać ma własne umiejętności i cechy charakterystyczne - wybierz swoją ulubioną!</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-title">Konkurencja</div>
+                        <p>Zdobywaj punkty, pokonuj kolejne poziomy i walcz o najwyższą pozycję w rankingu!</p>
+                    </div>
+                </div>
+                
+                <div class="feature-highlight">
+                    <p><strong>Mandate Madness</strong> to nie tylko rozrywka - to także satyryczne spojrzenie na otaczający nas świat. Poznaj różne poglądy, baw się i rozwijaj swoje umiejętności platformowe!</p>
+                </div>
             </div>
             
-            <div class="info-section">
+            <div id="screenshots" class="info-section">
                 <h2>Zrzuty ekranu z gry</h2>
                 <div class="screenshots">
                     <div class="screenshot">
-                        <img src="01.png" alt="Zrzut ekranu z rozgrywki 1">
+                        <img src="01.png" alt="Zrzut ekranu z rozgrywki 1" loading="lazy">
                     </div>
                     <div class="screenshot">
-                        <img src="02.png" alt="Zrzut ekranu z rozgrywki 2">
+                        <img src="02.png" alt="Zrzut ekranu z rozgrywki 2" loading="lazy">
                     </div>
                     <div class="screenshot">
-                        <img src="03.png" alt="Zrzut ekranu z rozgrywki 3">
+                        <img src="03.png" alt="Zrzut ekranu z rozgrywki 3" loading="lazy">
                     </div>
                 </div>
             </div>
             
-            <div class="info-section">
+            <div id="features" class="info-section">
+                <h2>Główne funkcje gry</h2>
+                <div class="game-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <div class="feature-title">Różnorodne poziomy</div>
+                        <p>Eksploruj liczne, unikalnie zaprojektowane poziomy - każdy z własnymi wyzwaniami.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💪</div>
+                        <div class="feature-title">Rozwijaj umiejętności</div>
+                        <p>Doskonalenie gry przynosi nowe możliwości i wyższe wyniki.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🏅</div>
+                        <div class="feature-title">Tabele wyników</div>
+                        <p>Rywalizuj z przyjaciółmi i graczami z całego świata.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <div class="feature-title">Intuicyjna kontrola</div>
+                        <p>Łatwa do opanowania, ale wymagająca mistrzowska kontrola nad grą.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="characters" class="info-section">
                 <h2>Wybór postaci</h2>
-                <p>Wybierz spośród różnorodnej obsady postaci, z których każda ma swoje unikalne umiejętności i perspektywy polityczne:</p>
-                <ul>
-                    <li><img src="ks.png" alt="Reporter" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Reporter</strong> - Odkrywa historie, które trzymają polityków w napięciu</li>
-                    <li><img src="kn.png" alt="Historyk" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Historyk</strong> - Strażnik polskiej przeszłości, czasem zmienianej</li>
-                    <li><img src="gb.png" alt="Strażak" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Strażak</strong> - Filmowiec gaszący przeciwne poglądy</li>
-                    <li><img src="sm.png" alt="Księgowy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Księgowy</strong> - Marzy o niższych podatkach i większej wolności</li>
-                    <li><img src="rt.png" alt="Tęczowy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Tęczowy</strong> - Maluje politykę wszystkimi kolorami inkluzywności</li>
-                    <li><img src="mj.png" alt="Piwowar" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Piwowar</strong> - Wierzy, że politykę rozwiązuje się na dnie kufla piwa</li>
-                    <li><img src="sh.png" alt="Łzawy" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Łzawy</strong> - Odwołuje się do emocji sięgających po chusteczkę</li>
-                    <li><img src="mb.png" alt="Czerwony" style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;"><strong>Czerwony</strong> - Postępowy aktywista o wyraźnych poglądach politycznych</li>
-                </ul>
+                <p>Wybierz spośród różnorodnej obsady postaci, z których każda ma swoje unikalne umiejętności i perspektywy:</p>
+                
+                <div class="characters-grid">
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="ks.png" alt="Reporter" class="character-image">
+                            <div>
+                                <div class="character-name">Reporter</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Odkrywa historie, które trzymają polityków w napięciu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="kn.png" alt="Historyk" class="character-image">
+                            <div>
+                                <div class="character-name">Historyk</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Strażnik polskiej przeszłości, czasem zmienianej</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="gb.png" alt="Strażak" class="character-image">
+                            <div>
+                                <div class="character-name">Strażak</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Filmowiec gaszący przeciwne poglądy</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="sm.png" alt="Księgowy" class="character-image">
+                            <div>
+                                <div class="character-name">Księgowy</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Marzy o niższych podatkach i większej wolności</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="rt.png" alt="Tęczowy" class="character-image">
+                            <div>
+                                <div class="character-name">Tęczowy</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Maluje politykę wszystkimi kolorami inkluzywności</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="mj.png" alt="Piwowar" class="character-image">
+                            <div>
+                                <div class="character-name">Piwowar</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Wierzy, że politykę rozwiązuje się na dnie kufla piwa</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="sh.png" alt="Łzawy" class="character-image">
+                            <div>
+                                <div class="character-name">Łzawy</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Odwołuje się do emocji sięgających po chusteczkę</p>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <div class="character-header">
+                            <img src="mb.png" alt="Czerwony" class="character-image">
+                            <div>
+                                <div class="character-name">Czerwony</div>
+                            </div>
+                        </div>
+                        <div class="character-info">
+                            <p class="character-desc">Postępowy aktywista o wyraźnych ideałach i poglądach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nowa sekcja dla udostępniania wyników -->
+            <div id="share" class="info-section">
+                <h2>Podziel się wynikiem!</h2>
+                <p>Uzyskałeś świetny wynik w grze Mandate Madness? Podziel się nim ze znajomymi i zaproś ich do wspólnej zabawy!</p>
+                
+                <div class="share-form">
+                    <div class="form-group">
+                        <label for="character-select">Wybierz postać:</label>
+                        <select id="character-select" class="form-control">
+                            <option value="Reporter">Reporter</option>
+                            <option value="Historyk">Historyk</option>
+                            <option value="Strażak">Strażak</option>
+                            <option value="Księgowy">Księgowy</option>
+                            <option value="Tęczowy">Tęczowy</option>
+                            <option value="Piwowar">Piwowar</option>
+                            <option value="Łzawy">Łzawy</option>
+                            <option value="Czerwony">Czerwony</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="score-input">Twój najlepszy wynik:</label>
+                        <input type="number" id="score-input" class="form-control" min="1" max="999" value="10">
+                    </div>
+                    
+                    <button id="share-button" class="share-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        Udostępnij mój wynik
+                    </button>
+                </div>
+                
+                <div class="share-preview">
+                    <h3>Podgląd udostępnianej wiadomości:</h3>
+                    <p id="share-preview-text" class="preview-text">Właśnie pobiłem swój rekord w Mandate Madness! Mój wynik jako <span id="preview-character">Reporter</span> to <span id="preview-score">10</span>! Kliknij link aby dołączyć do gry i ze mną konkurować! #MandateMadness</p>
+                </div>
+            </div>
+            
+            <div id="download" class="download-section">
+                <h2>Pobierz już teraz!</h2>
+                <p>Dołącz do tysięcy graczy i rozpocznij swoją przygodę już dziś!</p>
+                <div class="download-buttons" style="margin-top: var(--spacing-md);">
+                    <a href="https://play.google.com/store/apps/details?id=com.mkrasniewski.mandatemadness" id="android-download-bottom" class="cta-button" target="_blank">
+                        <img src="google_play.png" alt="Android Icon" class="store-icon">
+                        <span>Pobierz z Google Play</span>
+                    </a>
+                    <a href="https://apps.apple.com/us/app/mandatemadness-political-race/id6744563582" id="ios-download-bottom" class="cta-button cta-button-ios" target="_blank">
+                        <img src="apple.png" alt="iOS Icon" class="store-icon">
+                        <span>Pobierz z App Store</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -289,19 +1067,26 @@
         </div>
 
         <div id="privacy-pl" class="privacy-content active">
-            <p>Ta polityka prywatności dotyczy gry mobilnej <strong>Mandate Madness</strong>, stworzonej przez <strong>Mateusza Kraśniewskiego</strong>.</p>
+            <p>Ta polityka prywatności dotyczy gry mobilnej <strong>Mandate Madness</strong>, stworzonej przez <strong>Mateusz Kraśniewski - Usługi Informatyczne</strong>.</p>
 
             <div class="privacy-section">
                 <h3><span class="privacy-icon">📦</span> Jakie informacje zbieramy</h3>
                 <ul>
                     <li><strong>DEVICE_ID</strong> – używane do śledzenia wyników rozgrywki.</li>
-                    <li><strong>Nie zbieramy</strong> żadnych danych osobowych, takich jak imię, e-mail czy lokalizacja.</li>
+                    <li><strong>Nazwa użytkownika</strong> – używana do identyfikacji gracza na tablicach wyników.</li>
+                    <li><strong>Statystyki gry</strong> – takie jak wyniki, osiągnięcia i postępy w grze, powiązane z DEVICE_ID.</li>
+                    <li><strong>Nie zbieramy</strong> żadnych innych danych osobowych, takich jak imię, e-mail czy lokalizacja.</li>
+                </ul>
+                <p><strong>Wyjaśnienie DEVICE_ID:</strong></p>
+                <ul>
+                    <li><strong>Android</strong> – ID identyfikujące urządzenie lub UUID wygenerowane dla pojedynczej instalacji gry.</li>
+                    <li><strong>iOS</strong> – Apple ID lub, jeżeli niedostępne, UUID wygenerowane dla pojedynczej instalacji gry.</li>
                 </ul>
             </div>
 
             <div class="privacy-section">
                 <h3><span class="privacy-icon">⚙️</span> Jak wykorzystujemy te informacje</h3>
-                <p>Używamy <strong>DEVICE_ID</strong> wyłącznie do powiązania Twoich najlepszych wyników z Twoim urządzeniem. Pomaga to nam utrzymać funkcjonalność tablic wyników. Bez śledzenia, bez reklam, bez żadnych podstępów.</p>
+                <p>Używamy <strong>DEVICE_ID</strong> wyłącznie do powiązania Twoich najlepszych wyników, nazwy użytkownika i statystyk gry z Twoim urządzeniem. Pomaga to nam utrzymać funkcjonalność tablic wyników i zapewnić spójne doświadczenie podczas gry. Bez śledzenia, bez reklam, bez żadnych podstępów.</p>
             </div>
 
             <div class="privacy-section">
@@ -331,19 +1116,26 @@
         </div>
 
         <div id="privacy-en" class="privacy-content">
-            <p>This privacy policy applies to the mobile game <strong>Mandate Madness</strong>, created by <strong>Mateusz Kraśniewski</strong>.</p>
+            <p>This privacy policy applies to the mobile game <strong>Mandate Madness</strong>, created by <strong>Mateusz Kraśniewski - Usługi Informatyczne</strong>.</p>
 
             <div class="privacy-section">
                 <h3><span class="privacy-icon">📦</span> What information we collect</h3>
                 <ul>
                     <li><strong>DEVICE_ID</strong> - used to track game scores.</li>
-                    <li><strong>We do not collect</strong> any personal data such as name, email, or location.</li>
+                    <li><strong>Username</strong> - used to identify players on leaderboards.</li>
+                    <li><strong>Game statistics</strong> - such as scores, achievements, and game progress, linked to your DEVICE_ID.</li>
+                    <li><strong>We do not collect</strong> any other personal data such as name, email, or location.</li>
+                </ul>
+                <p><strong>DEVICE_ID explanation:</strong></p>
+                <ul>
+                    <li><strong>Android</strong> - Device identifying ID or UUID generated for a single game installation.</li>
+                    <li><strong>iOS</strong> - Apple ID or, if not available, UUID generated for a single game installation.</li>
                 </ul>
             </div>
 
             <div class="privacy-section">
                 <h3><span class="privacy-icon">⚙️</span> How we use this information</h3>
-                <p>We use <strong>DEVICE_ID</strong> solely to link your best scores with your device. This helps us maintain the leaderboard functionality. No tracking, no ads, no tricks.</p>
+                <p>We use <strong>DEVICE_ID</strong> solely to link your best scores, username, and game statistics with your device. This helps us maintain the leaderboard functionality and provide a consistent gaming experience. No tracking, no ads, no tricks.</p>
             </div>
 
             <div class="privacy-section">
@@ -369,6 +1161,49 @@
             <div class="privacy-section">
                 <h3><span class="privacy-icon">🎭</span> Fictional characters and satirical nature</h3>
                 <p><strong>Mandate Madness</strong> contains characters that are entirely fictional and created solely for entertainment and satirical purposes. Any resemblance to real persons, living or dead, is purely coincidental or intended as humorous social commentary. The game is not intended to offend, defame, or portray any specific individual in a negative light.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dodanie sekcji z regulaminem -->
+    <div id="terms" class="container privacy-container">
+        <h1>Regulamin</h1>
+        
+        <div class="privacy-section">
+            <h2>Regulamin gry "Mandate Madness"</h2>
+            
+            <div class="privacy-section">
+                <h3>1. Informacje ogólne</h3>
+                <p>1.1. Gra "Mandate Madness" jest mobilną grą przeznaczoną do użytku rozrywkowego.</p>
+                <p>1.2. Gra zawiera postacie całkowicie fikcyjne, stworzone wyłącznie w celach satyrycznych i humorystycznych. Jakiekolwiek podobieństwo do prawdziwych osób, żyjących lub zmarłych, jest przypadkowe lub stanowi element humorystycznego komentarza społecznego.</p>
+                <p>1.3. Gra nie ma na celu obrażania, szkalowania ani przedstawiania żadnej osoby w negatywnym świetle.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3>2. Wymagania wiekowe</h3>
+                <p>2.1. Gra jest przeznaczona wyłącznie dla użytkowników, którzy ukończyli 12 lat.</p>
+                <p>2.2. Korzystając z gry, użytkownik oświadcza, że ma co najmniej 12 lat.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3>3. Konto użytkownika</h3>
+                <p>3.1. Użytkownik, który zakłada konto w grze, jest osobą fizyczną, która zgadza się na warunki niniejszego regulaminu.</p>
+                <p>3.2. Użytkownik ponosi pełną odpowiedzialność za wybraną nazwę użytkownika.</p>
+                <p>3.3. Zastrzegamy sobie prawo do cenzurowania, zmiany lub trwałego usunięcia konta, jeżeli nazwa użytkownika zawiera treści obraźliwe, wulgarne, nieodpowiednie lub naruszające normy społeczne.</p>
+                <p>3.4. W przypadku naruszenia zasad, konto użytkownika może zostać zablokowane lub usunięte bez wcześniejszego ostrzeżenia.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3>4. Mikropłatności</h3>
+                <p>4.1. Gra może oferować możliwość dokonywania mikropłatności.</p>
+                <p>4.2. Za pomocą mikropłatności użytkownik może nabywać wirtualne przedmioty, waluty, ulepszenia lub inne elementy dostępne w grze.</p>
+                <p>4.3. Mikropłatności nie są obowiązkowe do korystania z gry, ale mogą wpływać na komfort rozgrywki.</p>
+                <p>4.4. Wszelkie transakcje są ostateczne i nie podlegają zwrotowi, chyba że wymagają tego obowiązujące przepisy prawa.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h3>5. Kontakt i pytania</h3>
+                <p>W przypadku jakichkolwiek wątpliwości, pytań lub zgłoszeń dotyczących gry, prosimy o kontakt pod adresem mateusz.krasniewski19@gmail.com</p>
             </div>
         </div>
     </div>
